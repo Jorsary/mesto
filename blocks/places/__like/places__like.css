@@ -1,0 +1,10 @@
+.places__like {
+  background-image: url(../../../images/like.svg);
+  width: 22px;
+  height: 19px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  align-self: flex-end;
+  margin: 0 0 4px 0;
+  padding: 0;
+}
