@@ -1,0 +1,19 @@
+.profile__btn-add {
+  border: 2px solid #FFFFFF;
+  border-radius: 2px;
+  width: 150px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0);
+  background-image: url(../../../images/plus.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 1023px) {
+  .profile__btn-add {
+    width: 100%;
+  }
+}

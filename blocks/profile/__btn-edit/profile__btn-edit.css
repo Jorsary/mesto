@@ -1,0 +1,22 @@
+.profile__btn-edit {
+  margin: 0 0 8px 0;
+  padding: 0;
+  border: 1px solid #FFFFFF;
+  width: 24px;
+  height: 24px;
+  background-color: rgba(0, 0, 0, 0);
+  background-image: url(../../../images/pencil.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+@media screen and (max-width: 1023px) {
+  .profile__btn-edit {
+    margin-bottom: 0;
+    width: 18px;
+    height: 18px;
+    align-self: center;
+  }
+}

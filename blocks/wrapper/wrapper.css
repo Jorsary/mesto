@@ -2,3 +2,9 @@
   margin: 0 auto;
 }
 
+@media screen and (max-width: 1023px) {
+  .wrapper {
+    padding: 0 18px;
+  }
+}
+
