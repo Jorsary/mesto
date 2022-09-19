@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./pages/index.css" />
     <title>Mesto</title>
   </head>
   <body class="page">
@@ -15,59 +15,83 @@
 
       <main class="main">
         <section class="profile">
-          <img class="profile__avatar" src="./images/avatar.png" alt="аватар
-            пользователя">
+          <img
+            class="profile__avatar"
+            src="./images/avatar.png"
+            alt="аватар
+            пользователя"
+          />
           <div class="profile__info">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__btn-edit"></button>
+            <div class="profile__wrapper">
+              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <button class="profile__btn-edit"></button>
+            </div>
             <p class="profile__status">Исследователь океана</p>
           </div>
           <button class="profile__btn-add"></button>
         </section>
         <section class="places">
           <div class="places__card">
-            <img src="./images/places/charskie-sands.jpg" alt=""
-              class="places__img">
+            <img
+              src="./images/places/charskie-sands.jpg"
+              alt=""
+              class="places__img"
+            />
             <div class="places__info">
               <h3 class="places__title">Чарские пески</h3>
               <button class="places__like"></button>
             </div>
           </div>
           <div class="places__card">
-            <img src="./images/places/kungurskya-cave.jpg" alt=""
-              class="places__img">
+            <img
+              src="./images/places/kungurskya-cave.jpg"
+              alt=""
+              class="places__img"
+            />
             <div class="places__info">
               <h3 class="places__title">Кунгурская пещера</h3>
               <button class="places__like"></button>
             </div>
           </div>
           <div class="places__card">
-            <img src="./images/places/lake-elton.jpg" alt=""
-              class="places__img">
+            <img
+              src="./images/places/lake-elton.jpg"
+              alt=""
+              class="places__img"
+            />
             <div class="places__info">
               <h3 class="places__title">Озеро Эльтон</h3>
               <button class="places__like"></button>
             </div>
           </div>
           <div class="places__card">
-            <img src="./images/places/lake-sveltoyar.jpg" alt=""
-              class="places__img">
+            <img
+              src="./images/places/lake-sveltoyar.jpg"
+              alt=""
+              class="places__img"
+            />
             <div class="places__info">
               <h3 class="places__title">Озеро Светлояр</h3>
               <button class="places__like"></button>
             </div>
           </div>
           <div class="places__card">
-            <img src="./images/places/lenskie-stolby.jpg" alt=""
-              class="places__img">
+            <img
+              src="./images/places/lenskie-stolby.jpg"
+              alt=""
+              class="places__img"
+            />
             <div class="places__info">
               <h3 class="places__title">Ленские столбы</h3>
               <button class="places__like"></button>
             </div>
           </div>
           <div class="places__card">
-            <img src="./images/places/mountain-vottovaara.jpg" alt=""
-              class="places__img">
+            <img
+              src="./images/places/mountain-vottovaara.jpg"
+              alt=""
+              class="places__img"
+            />
             <div class="places__info">
               <h3 class="places__title">Гора Воттоваара</h3>
               <button class="places__like"></button>
@@ -84,8 +108,8 @@
         <button class="popup__btn-close"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="popup__form">
-          <input type="text" class="popup__input popup__input_edit_name" >
-          <input type="text" class="popup__input popup__input_edit_status" >
+          <input type="text" class="popup__input popup__input_edit_name" />
+          <input type="text" class="popup__input popup__input_edit_status" />
           <button type="submit" class="popup__btn-submit">Сохранить</button>
         </form>
       </div>
