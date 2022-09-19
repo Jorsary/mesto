@@ -8,11 +8,10 @@
     <title>Mesto</title>
   </head>
   <body class="page">
+    <header class="header">
+      <div class="header__logo"></div>
+    </header>
     <div class="wrapper">
-      <header class="header">
-        <div class="header__logo"></div>
-      </header>
-
       <main class="main">
         <section class="profile">
           <img
@@ -24,92 +23,100 @@
           <div class="profile__info">
             <div class="profile__wrapper">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <button class="profile__btn-edit"></button>
+              <button type="button" class="profile__btn-edit"></button>
             </div>
             <p class="profile__status">Исследователь океана</p>
           </div>
-          <button class="profile__btn-add"></button>
+          <button type="button" class="profile__btn-add"></button>
         </section>
         <section class="places">
-          <div class="places__card">
+          <article class="places__card">
             <img
               src="./images/places/charskie-sands.jpg"
               alt="пустыня"
               class="places__img"
             />
             <div class="places__info">
-              <h3 class="places__title">Чарские пески</h3>
-              <button class="places__like"></button>
+              <h2 class="places__title">Чарские пески</h2>
+              <button type="button" class="places__like"></button>
             </div>
-          </div>
-          <div class="places__card">
+          </article>
+          <article class="places__card">
             <img
               src="./images/places/kungurskya-cave.jpg"
               alt="пещера"
               class="places__img"
             />
             <div class="places__info">
-              <h3 class="places__title">Кунгурская пещера</h3>
-              <button class="places__like"></button>
+              <h2 class="places__title">Кунгурская пещера</h2>
+              <button type="button" class="places__like"></button>
             </div>
-          </div>
-          <div class="places__card">
+          </article>
+          <article class="places__card">
             <img
               src="./images/places/lake-elton.jpg"
               alt="озеро"
               class="places__img"
             />
             <div class="places__info">
-              <h3 class="places__title">Озеро Эльтон</h3>
-              <button class="places__like"></button>
+              <h2 class="places__title">Озеро Эльтон</h2>
+              <button type="button" class="places__like"></button>
             </div>
-          </div>
-          <div class="places__card">
+          </article>
+          <article class="places__card">
             <img
               src="./images/places/lake-sveltoyar.jpg"
               alt="озеро в лесу"
               class="places__img"
             />
             <div class="places__info">
-              <h3 class="places__title">Озеро Светлояр</h3>
-              <button class="places__like"></button>
+              <h2 class="places__title">Озеро Светлояр</h2>
+              <button type="button" class="places__like"></button>
             </div>
-          </div>
-          <div class="places__card">
+          </article>
+          <article class="places__card">
             <img
               src="./images/places/lenskie-stolby.jpg"
               alt="скалы"
               class="places__img"
             />
             <div class="places__info">
-              <h3 class="places__title">Ленские столбы</h3>
-              <button class="places__like"></button>
+              <h2 class="places__title">Ленские столбы</h2>
+              <button type="button" class="places__like"></button>
             </div>
-          </div>
-          <div class="places__card">
+          </article>
+          <article class="places__card">
             <img
               src="./images/places/mountain-vottovaara.jpg"
               alt="камень"
               class="places__img"
             />
             <div class="places__info">
-              <h3 class="places__title">Гора Воттоваара</h3>
-              <button class="places__like"></button>
+              <h2 class="places__title">Гора Воттоваара</h2>
+              <button type="button" class="places__like"></button>
             </div>
-          </div>
+          </article>
         </section>
       </main>
       <footer class="footer">
-        <h2 class="footer__copyright">&copy; 2020 Mesto Russia</h2>
+        <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
       </footer>
     </div>
     <div class="popup">
       <div class="popup__container">
-        <button class="popup__btn-close"></button>
+        <button type="button" class="popup__btn-close"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form">
-          <input type="text" class="popup__input popup__input_edit_name" />
-          <input type="text" class="popup__input popup__input_edit_status" />
+        <form name="formEditProfile" class="popup__form">
+          <input
+            name="name"
+            type="text"
+            class="popup__input popup__input_edit_name"
+          />
+          <input
+            name="status"
+            type="text"
+            class="popup__input popup__input_edit_status"
+          />
           <button type="submit" class="popup__btn-submit">Сохранить</button>
         </form>
       </div>
