@@ -29,74 +29,7 @@
           </div>
           <button type="button" class="profile__btn-add"></button>
         </section>
-        <section class="places">
-          <article class="places__card">
-            <img
-              src="./images/places/charskie-sands.jpg"
-              alt="пустыня"
-              class="places__img"
-            />
-            <div class="places__info">
-              <h2 class="places__title">Чарские пески</h2>
-              <button type="button" class="places__like"></button>
-            </div>
-          </article>
-          <article class="places__card">
-            <img
-              src="./images/places/kungurskya-cave.jpg"
-              alt="пещера"
-              class="places__img"
-            />
-            <div class="places__info">
-              <h2 class="places__title">Кунгурская пещера</h2>
-              <button type="button" class="places__like"></button>
-            </div>
-          </article>
-          <article class="places__card">
-            <img
-              src="./images/places/lake-elton.jpg"
-              alt="озеро"
-              class="places__img"
-            />
-            <div class="places__info">
-              <h2 class="places__title">Озеро Эльтон</h2>
-              <button type="button" class="places__like"></button>
-            </div>
-          </article>
-          <article class="places__card">
-            <img
-              src="./images/places/lake-sveltoyar.jpg"
-              alt="озеро в лесу"
-              class="places__img"
-            />
-            <div class="places__info">
-              <h2 class="places__title">Озеро Светлояр</h2>
-              <button type="button" class="places__like"></button>
-            </div>
-          </article>
-          <article class="places__card">
-            <img
-              src="./images/places/lenskie-stolby.jpg"
-              alt="скалы"
-              class="places__img"
-            />
-            <div class="places__info">
-              <h2 class="places__title">Ленские столбы</h2>
-              <button type="button" class="places__like"></button>
-            </div>
-          </article>
-          <article class="places__card">
-            <img
-              src="./images/places/mountain-vottovaara.jpg"
-              alt="камень"
-              class="places__img"
-            />
-            <div class="places__info">
-              <h2 class="places__title">Гора Воттоваара</h2>
-              <button type="button" class="places__like"></button>
-            </div>
-          </article>
-        </section>
+        <section class="places"></section>
       </main>
       <footer class="footer">
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
@@ -121,6 +54,20 @@
         </form>
       </div>
     </div>
+    <template id="#card_template">
+      <article class="places__card">
+        <img
+          src="./images/places/charskie-sands.jpg"
+          alt="пустыня"
+          class="places__img"
+        />
+        <div class="places__info">
+          <h2 class="places__title">Чарские пески</h2>
+          <button type="button" class="places__like"></button>
+        </div>
+      </article>
+    </template>
+    <script src="./scripts/data.js"></script>
     <script src="./scripts/index.js"></script>
   </body>
 </html>
