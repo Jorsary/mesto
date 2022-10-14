@@ -44,13 +44,11 @@
             name="name"
             type="text"
             class="popup__input popup__input_edit_name"
-            
           />
           <input
             name="status"
             type="text"
             class="popup__input popup__input_edit_status"
-            
           />
           <button type="submit" class="popup__btn-submit">Сохранить</button>
         </form>
@@ -81,6 +79,7 @@
     </div>
     <template id="card_template">
       <article class="places__card">
+        <button type="button" class="places__remove"></button>
         <img src="" alt="пустыня" class="places__img" />
         <div class="places__info">
           <h2 class="places__title"></h2>

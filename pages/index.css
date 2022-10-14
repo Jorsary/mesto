@@ -20,6 +20,7 @@
 
 @import url(../blocks/places/places.css);
 @import url(../blocks/places/__card/places__card.css);
+@import url(../blocks/places/__remove/places__remove.css);
 @import url(../blocks/places/__img/places__img.css);
 @import url(../blocks/places/__info/places__info.css);
 @import url(../blocks/places/__title/places__title.css);

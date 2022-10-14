@@ -1,4 +1,5 @@
 .places__card {
+  position: relative;
   background: #ffffff;
   border-radius: 10px;
   width: 282px;
@@ -6,4 +7,5 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
