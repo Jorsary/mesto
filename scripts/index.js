@@ -20,14 +20,27 @@ const profileSubmitButton = popupProfile.querySelector(".popup__btn-submit");
 const places = document.querySelector(".places");
 const cardTemplate = document.querySelector("#card_template").content;
 
+const popupOpenImage = document.querySelector("#popupImage");
+const popupImage = popupOpenImage.querySelector(".popup__image");
+const popupImageClose = popupOpenImage.querySelector(".popup__btn-close");
+const popupImageText = popupOpenImage.querySelector(".popup__text");
+
 const createElement = (name, link) => {
   const card = cardTemplate.querySelector(".places__card").cloneNode(true);
+  const cardImage = card.querySelector(".places__img");
+  const cardText = card.querySelector(".places__title");
   card.querySelector(".places__img").src = link;
   card.querySelector(".places__title").textContent = name;
   const handlerRemoveCard = card.querySelector(".places__remove");
   handlerRemoveCard.addEventListener("click", removeCard);
-  const handlerLike = card.querySelector(".places__like")
+  const handlerLike = card.querySelector(".places__like");
   handlerLike.addEventListener("click", likeCard);
+  cardImage.addEventListener("click", () => {
+    popupImage.src = cardImage.src;
+    popupImage.alt = cardText.textContent;
+    popupImageText.textContent = cardText.textContent;
+    openPopup(popupOpenImage);
+  });
   places.prepend(card);
 };
 
@@ -45,17 +58,21 @@ function removeCard(e) {
 }
 
 function likeCard(e) {
-  e.target.classList.toggle('places__like_active')
+  e.target.classList.toggle("places__like_active");
 }
 
-
 const openPopup = (popupName) => {
-  console.log(popupName)
   popupName.classList.add("popup_opened");
 };
 const closePopup = (popupName) => {
   popupName.classList.remove("popup_opened");
 };
+
+function closeCard() {
+  closePopup(popupOpenImage);
+}
+
+popupImageClose.addEventListener("click", closeCard);
 
 function openPopupAddCard() {
   openPopup(popupAddCard);
