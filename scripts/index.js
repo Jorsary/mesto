@@ -15,12 +15,12 @@ const profileInputStatus = popupProfile.querySelector(
 );
 const profileChangeForm = popupProfile.querySelector(".popup__form");
 
-const places = document.querySelector(".places");
-const cardTemplate = document.querySelector("#card_template").content;
-
 const popupOpenImage = document.querySelector("#popupImage");
 const popupImage = popupOpenImage.querySelector(".popup__image");
 const popupImageText = popupOpenImage.querySelector(".popup__text");
+
+const places = document.querySelector(".places");
+const cardTemplate = document.querySelector("#card_template").content;
 
 const closeButtons = document.querySelectorAll(".popup__btn-close");
 
@@ -66,11 +66,29 @@ function likeCard(e) {
   e.target.classList.toggle("places__like_active");
 }
 
+const handlerClosePopupToOverlay = (evt) => {
+  if (evt.target === evt.currentTarget) {
+    closePopup(evt.currentTarget);
+  }
+};
+
+const handlerClosePopupToEsc = (evt) => {
+  const popup = document.querySelector(".popup_opened");
+  if (evt.key === "Escape") {
+    closePopup(popup);
+  }
+};
+
 const openPopup = (popupName) => {
   popupName.classList.add("popup_opened");
+  popupName.addEventListener("click", handlerClosePopupToOverlay);
+  document.addEventListener("keydown", handlerClosePopupToEsc);
 };
 const closePopup = (popupName) => {
   popupName.classList.remove("popup_opened");
+  const formElement = popupName.querySelector(".popup__form");
+  popupName.removeEventListener("click", handlerClosePopupToOverlay);
+  document.removeEventListener("keydown", handlerClosePopupToEsc);
 };
 
 closeButtons.forEach((button) => {
@@ -80,6 +98,7 @@ closeButtons.forEach((button) => {
 
 function openPopupAddCard() {
   openPopup(popupAddCard);
+  resetValidation(popupAddCard,config)
   addCardForm.reset();
 }
 
@@ -100,6 +119,7 @@ addCardForm.addEventListener("submit", handlerAddCard);
 function openPopupEditProfile() {
   profileInputName.value = profileName.textContent;
   profileInputStatus.value = profileStatus.textContent;
+  resetValidation(popupProfile,config)
   openPopup(popupProfile);
 }
 
