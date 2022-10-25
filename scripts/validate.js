@@ -23,28 +23,43 @@ const hideInputError = (formElement, inputElement, configValidation) => {
   errorElement.textContent = "";
 };
 
-function resetValidation(popupName,configValidation) {
-  const formElement = popupName.querySelector(configValidation.formSelector)
-  const inputList = Array.from(formElement.querySelectorAll(configValidation.inputSelector))
-  inputList.forEach((elem)=>{
-    hideInputError(formElement,elem,configValidation)
-  })
-}
-
-function checkFormValidity(inputList, formElement, configValidation) {
+function resetValidation(formElement, configValidation) {
+  const inputList = Array.from(
+    formElement.querySelectorAll(configValidation.inputSelector)
+  );
   const buttonSubmit = formElement.querySelector(
     configValidation.submitButtonSelector
   );
-  if (
-    inputList.some((inputElement) => {
-      return !inputElement.validity.valid;
-    })
-  ) {
-    buttonSubmit.classList.add(configValidation.inactiveButtonClass);
-    buttonSubmit.setAttribute("disabled", true);
+  inputList.forEach((elem) => {
+    hideInputError(formElement, elem, configValidation);
+  });
+  disableSubmitButton(buttonSubmit, configValidation);
+}
+
+function hasInvalidInput(inputList) {
+  return inputList.some((inputElement) => {
+    return !inputElement.validity.valid;
+  });
+}
+
+function disableSubmitButton(button, configValidation) {
+  button.classList.add(configValidation.inactiveButtonClass);
+  button.setAttribute("disabled", true);
+}
+
+function enableSubmitButton(button, configValidation) {
+  button.classList.remove(configValidation.inactiveButtonClass);
+  button.removeAttribute("disabled");
+}
+
+function toggleButtonState(inputList, formElement, configValidation) {
+  const buttonSubmit = formElement.querySelector(
+    configValidation.submitButtonSelector
+  );
+  if (hasInvalidInput(inputList)) {
+    disableSubmitButton(buttonSubmit, configValidation);
   } else {
-    buttonSubmit.classList.remove(configValidation.inactiveButtonClass);
-    buttonSubmit.removeAttribute("disabled");
+    enableSubmitButton(buttonSubmit, configValidation);
   }
 }
 
@@ -68,7 +83,7 @@ function setEventListeners(formElement, configValidation) {
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", () => {
       checkInputValidity(formElement, inputElement, configValidation);
-      checkFormValidity(inputList, formElement, configValidation);
+      toggleButtonState(inputList, formElement, configValidation);
     });
   });
 }
