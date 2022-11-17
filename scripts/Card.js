@@ -12,19 +12,30 @@ export default class Card {
       .cloneNode(true);
     return card;
   }
+  _clickDeleteButtonHandler() {
+    this._card.remove();
+    this._card = null;
+  }
+
+  _clickLikeButtonHandler() {
+    this._buttonLikeCard.classList.toggle("places__like_active");
+  }
+
+  _clickCardImageHandler() {
+    this._openPopupImage(this._data.name, this._data.link);
+  }
 
   _setEventListner() {
     this._buttonDeleteCard.addEventListener("click", () => {
-      this._card.remove();
-      this._card = null;
+      this._clickDeleteButtonHandler();
     });
 
     this._buttonLikeCard.addEventListener("click", () => {
-      this._buttonLikeCard.classList.toggle("places__like_active");
+      this._clickLikeButtonHandler();
     });
 
     this._cardImage.addEventListener("click", () => {
-      this._openPopupImage(this._data.name, this._data.link);
+      this._clickCardImageHandler();
     });
   }
 

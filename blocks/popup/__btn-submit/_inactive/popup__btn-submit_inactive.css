@@ -3,6 +3,7 @@
   background-color: #ffffff;
   color: #000000;
   border: 1px solid #000000;
+  cursor: default;
 }
 
 .popup__btn-submit_inactive:hover {
