@@ -1,6 +1,7 @@
 import FormValidator from "../components/FormValidator.js";
 import { initialCards } from "../components/data.js";
 import Card from "../components/Card.js";
+import Popup from "../components/Card.js";
 import '../pages/index.css';
 
 const config = {
@@ -37,6 +38,10 @@ const cardsContainer = document.querySelector(".places");
 
 const formValidationProfile = new FormValidator(config, profileChangeForm);
 const formValidationPlace = new FormValidator(config, newPlaceForm);
+
+
+const popup = new Popup('#popupAddCard')
+popup.setEventListeners()
 
 function renderCard(element) {
   cardsContainer.prepend(element);
