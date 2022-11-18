@@ -1,3 +1,11 @@
+export const config = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__btn-submit",
+  inactiveButtonClass: "popup__btn-submit_inactive",
+  errorClass: "popup__error_active",
+};
+
 export const initialCards = [
   {
     name: "Архыз",
