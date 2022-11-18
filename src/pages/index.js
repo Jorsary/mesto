@@ -1,6 +1,6 @@
-import FormValidator from "../scripts/FormValidator.js";
-import { initialCards } from "../scripts/data.js";
-import Card from "../scripts/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import { initialCards } from "../components/data.js";
+import Card from "../components/Card.js";
 import '../pages/index.css';
 
 const config = {
@@ -62,25 +62,11 @@ const handleCloseByOverlay = (evt) => {
   }
 };
 
-const handleCloseByEsc = (evt) => {
-  if (evt.key === "Escape") {
-    const popup = document.querySelector(".popup_opened");
-    closePopup(popup);
-  }
-};
 
 popupNewPlace.addEventListener("click", handleCloseByOverlay);
 popupOpenImage.addEventListener("click", handleCloseByOverlay);
 popupProfile.addEventListener("click", handleCloseByOverlay);
 
-const openPopup = (popupName) => {
-  popupName.classList.add("popup_opened");
-  document.addEventListener("keydown", handleCloseByEsc);
-};
-const closePopup = (popupName) => {
-  popupName.classList.remove("popup_opened");
-  document.removeEventListener("keydown", handleCloseByEsc);
-};
 
 popups.forEach((popup) => {
   popup.addEventListener("mousedown", (evt) => {
