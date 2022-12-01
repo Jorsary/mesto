@@ -35,11 +35,11 @@ export default class Api {
     return this._fetch("/cards", "GET");
   }
 
-  editProfie(name, status) {
-    return this._fetch("/users/me", "PATCH", { name, status });
+  editProfie({name, about}) {
+    return this._fetch("/users/me", "PATCH", { name, about });
   }
 
-  createNewCard(name, link) {
+  createNewCard({name, link}) {
     return this._fetch("/cards", "POST", { name, link });
   }
 }

@@ -24,10 +24,12 @@ const popupImage = new PopupWithImage("#popupImage");
 popupImage.setEventListeners();
 
 const popupWithNewPlaceForm = new PopupWithForm("#popupAddCard", (data) => {
+  api.createNewCard(data);
   cardList.addItem(createCard(data));
 });
 
 const popupWithProfileForm = new PopupWithForm("#popupProfile", (data) => {
+  api.editProfie(data);
   userInfo.setUserInfo(data);
 });
 
@@ -41,20 +43,21 @@ const api = new Api({
 
 const userInfo = new UserInfo({
   nameSelector: ".profile__name",
-  StatusSelector: ".profile__status",
+  aboutSelector: ".profile__about",
 });
 
-Promise.all([api.getUser(), api.getCards()]).then(([userData, cards]) => {
-  userInfo.setUserInfo(userData)
-  const cardList = new Section(
-    {
-      items: cards,
-      renderer: (item) => {
-        cardList.addItem(createCard(item));
-      },
+const cardList = new Section(
+  {
+    renderer: (item) => {
+      cardList.addItem(createCard(item));
     },
-    ".places"
-  );
+  },
+  ".places"
+);
+
+Promise.all([api.getUser(), api.getCards()]).then(([userData, cards]) => {
+  userInfo.setUserInfo(userData);
+  cardList.setItems(cards);
   cardList.renderItems();
 });
 

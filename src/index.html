@@ -21,10 +21,10 @@
           />
           <div class="profile__info">
             <div class="profile__wrapper">
-              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <h1 class="profile__name"></h1>
               <button type="button" class="profile__btn-edit"></button>
             </div>
-            <p class="profile__status">Исследователь океана</p>
+            <p class="profile__about"></p>
           </div>
           <button type="button" class="profile__btn-add"></button>
         </section>
@@ -50,15 +50,15 @@
           />
           <span class="popup__error" id="profile-name-error"></span>
           <input
-            name="status"
+            name="about"
             type="text"
             minlength="2"
             maxlength="200"
-            class="popup__input popup__input_edit_status"
-            id="profile-status"
+            class="popup__input popup__input_edit_about"
+            id="profile-about"
             required
           />
-          <span class="popup__error" id="profile-status-error"></span>
+          <span class="popup__error" id="profile-about-error"></span>
           <button type="submit"  class="popup__btn-submit">Сохранить</button>
         </form>
       </div>
