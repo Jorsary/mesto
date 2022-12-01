@@ -3,6 +3,20 @@ export default class Card {
     this._data = data;
     this._cardTemplate = cardTemplate;
     this._openPopupImage = openPopupImage;
+    
+  }
+  
+  createElement() {
+    this._card = this._teplateElement();
+    this._buttonDeleteCard = this._card.querySelector(".places__remove");
+    this._cardImage = this._card.querySelector(".places__img");
+    this._cardTitle = this._card.querySelector(".places__title");
+    this._buttonLikeCard = this._card.querySelector(".places__like");
+    this._cardImage.src = this._data.link;
+    this._cardImage.alt = this._data.name;
+    this._cardTitle.textContent = this._data.name;
+    this._setEventListner();
+    return this._card;
   }
 
   _teplateElement() {
@@ -39,16 +53,5 @@ export default class Card {
     });
   }
 
-  createElement() {
-    this._card = this._teplateElement();
-    this._cardImage = this._card.querySelector(".places__img");
-    this._cardTitle = this._card.querySelector(".places__title");
-    this._buttonDeleteCard = this._card.querySelector(".places__remove");
-    this._buttonLikeCard = this._card.querySelector(".places__like");
-    this._cardImage.src = this._data.link;
-    this._cardImage.alt = this._data.name;
-    this._cardTitle.textContent = this._data.name;
-    this._setEventListner();
-    return this._card;
-  }
+  
 }

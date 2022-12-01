@@ -12,6 +12,6 @@ export default class UserInfo {
   }
   setUserInfo(userInfo){
     this.nameElement.textContent = userInfo.name
-    this.StatusSelector.textContent = userInfo.status
+    this.StatusSelector.textContent = userInfo.about
   }
 }
