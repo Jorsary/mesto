@@ -10,7 +10,9 @@ export default class UserInfo {
     };
   }
   setUserInfo(userInfo){
+    this.id = userInfo._id
     this.nameElement.textContent = userInfo.name
     this.aboutSelector.textContent = userInfo.about
   }
+
 }
