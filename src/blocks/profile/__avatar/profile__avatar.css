@@ -6,7 +6,6 @@
   position: relative;
   margin-right: 30px;
   cursor: pointer;
-
 }
 
 .profile__avatar:hover::before {

@@ -39,6 +39,7 @@ const popupDeleteConfirm = new PopupDeleteConfirm(
   }
 );
 popupDeleteConfirm.setEventListeners();
+
 const popupWithNewPlaceForm = new PopupWithForm("#popupAddCard", (data) => {
   api.createNewCard(data).then((card) => {
     cardList.addItem(createCard(card));
@@ -119,6 +120,17 @@ function createCard(data) {
     },
     (data, element) => {
       popupDeleteConfirm.openPopup(data._id, element);
+    },
+    (isLiked, id) => {
+      if (isLiked) {
+        api.removeLike(id).then((data)=>{
+          card.removeLike(data.likes.length)
+        })
+      } else {
+        api.setLike(id).then((data)=>{
+          card.setLike(data.likes.length)
+        })
+      }
     },
     userId
   );

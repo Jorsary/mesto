@@ -39,6 +39,10 @@ export default class Api {
     return this._fetch("/users/me", "PATCH", { name, about });
   }
 
+  editAvatar(avatar) {
+    return this._fetch(`/users/me/avatar`, "PATCH", avatar);
+  }
+
   createNewCard({ name, link }) {
     return this._fetch("/cards", "POST", { name, link });
   }
@@ -47,7 +51,11 @@ export default class Api {
     return this._fetch(`/cards/${id}`, "DELETE");
   }
 
-  editAvatar(avatar) {
-    return this._fetch(`/users/me/avatar`, "PATCH", avatar);
+  setLike(id) {
+    return this._fetch(`/cards/${id}/likes`, "PUT");
+  }
+
+  removeLike(id) {
+    return this._fetch(`/cards/${id}/likes`, "DELETE");
   }
 }
