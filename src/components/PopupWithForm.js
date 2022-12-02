@@ -6,7 +6,6 @@ export default class PopupWithForm extends Popup {
     this._form = this._popup.querySelector(".popup__form");
     this._inputList = this._form.querySelectorAll('.popup__input'); 
     this._formSumbit = formSubmit;
-    
   }
 
   _getInputValues() {

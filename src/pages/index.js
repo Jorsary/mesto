@@ -9,6 +9,8 @@ import UserInfo from "../components/UserInfo.js";
 import "../pages/index.css";
 import { config } from "../utils/constants.js";
 
+const avatar = document.querySelector(".profile__avatar");
+
 const popupNewPlace = document.querySelector("#popupAddCard");
 const newPlaceOpenButton = document.querySelector(".profile__btn-add");
 const newPlaceForm = popupNewPlace.querySelector(".popup__form");
@@ -18,17 +20,24 @@ const profileOpenButton = document.querySelector(".profile__btn-edit");
 
 const profileChangeForm = popupProfile.querySelector(".popup__form");
 
+const popupAvatar = document.querySelector("#popupAvatar");
+const avatarForm = popupAvatar.querySelector(".popup__form");
+
 const formValidationProfile = new FormValidator(config, profileChangeForm);
 const formValidationPlace = new FormValidator(config, newPlaceForm);
+const formValidationAvatar = new FormValidator(config, avatarForm);
 
 const popupImage = new PopupWithImage("#popupImage");
 popupImage.setEventListeners();
 
-const popupDeleteConfirm = new PopupDeleteConfirm("#popupDelete", (id,card) => {
-  api.deleteCard(id)
-  card.remove()
-  card=null
-});
+const popupDeleteConfirm = new PopupDeleteConfirm(
+  "#popupDelete",
+  (id, card) => {
+    api.deleteCard(id);
+    card.remove();
+    card = null;
+  }
+);
 popupDeleteConfirm.setEventListeners();
 const popupWithNewPlaceForm = new PopupWithForm("#popupAddCard", (data) => {
   api.createNewCard(data).then((card) => {
@@ -39,6 +48,12 @@ const popupWithNewPlaceForm = new PopupWithForm("#popupAddCard", (data) => {
 const popupWithProfileForm = new PopupWithForm("#popupProfile", (data) => {
   api.editProfie(data);
   userInfo.setUserInfo(data);
+});
+
+const PopupWithAvatarForm = new PopupWithForm("#popupAvatar", (data) => {
+  api
+    .editAvatar({ avatar: data.avatar })
+    .then(() => userInfo.setAvatar(data.avatar));
 });
 
 const api = new Api({
@@ -52,6 +67,7 @@ const api = new Api({
 const userInfo = new UserInfo({
   nameSelector: ".profile__name",
   aboutSelector: ".profile__about",
+  avatarSelector: ".profile__avatar-image",
 });
 
 let userId;
@@ -65,12 +81,15 @@ const cardList = new Section(
   ".places"
 );
 
-Promise.all([api.getUser(), api.getCards()]).then(([userData, cards]) => {
-  userId = userData._id;
-  userInfo.setUserInfo(userData);
-  cardList.setItems(cards);
-  cardList.renderItems();
-});
+Promise.all([api.getUser(), api.getCards()])
+  .then(([userData, cards]) => {
+    userId = userData._id;
+    userInfo.setAvatar(userData.avatar);
+    userInfo.setUserInfo(userData);
+    cardList.setItems(cards);
+    cardList.renderItems();
+  })
+  .catch((error) => console.error(error));
 
 popupWithProfileForm.setEventListeners();
 profileOpenButton.addEventListener("click", () => {
@@ -85,6 +104,12 @@ newPlaceOpenButton.addEventListener("click", () => {
   formValidationPlace.resetValidation();
 });
 
+PopupWithAvatarForm.setEventListeners();
+avatar.addEventListener("click", () => {
+  PopupWithAvatarForm.openPopup();
+  formValidationPlace.resetValidation();
+});
+
 function createCard(data) {
   const card = new Card(
     data,
@@ -92,8 +117,8 @@ function createCard(data) {
     (title, image) => {
       popupImage.openPopup(title, image);
     },
-    (data,element) => {
-      popupDeleteConfirm.openPopup(data._id,element);
+    (data, element) => {
+      popupDeleteConfirm.openPopup(data._id, element);
     },
     userId
   );
@@ -102,3 +127,4 @@ function createCard(data) {
 
 formValidationProfile.enableValidation();
 formValidationPlace.enableValidation();
+formValidationAvatar.enableValidation();

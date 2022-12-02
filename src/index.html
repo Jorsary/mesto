@@ -13,12 +13,10 @@
     <div class="wrapper">
       <main class="main">
         <section class="profile">
-          <img
-            class="profile__avatar"
-            src="<%=require('./images/avatar.png')%>"
-          alt="аватар
-          пользователя"
-          />
+          <div class="profile__avatar">
+            <img class="profile__avatar-image" src="."
+            alt="Аватар" />
+          </div>
           <div class="profile__info">
             <div class="profile__wrapper">
               <h1 class="profile__name"></h1>
@@ -64,7 +62,7 @@
       </div>
     </div>
 
-    <div id="popupAddCard" class="popup popup">
+    <div id="popupAddCard" class="popup">
       <div class="popup__container">
         <button type="button" class="popup__btn-close"></button>
         <h2 class="popup__title">Добавить место</h2>
@@ -106,6 +104,25 @@
       <div class="popup__image-contain">
         <img class="popup__image" />
         <h2 class="popup__text"></h2>
+        <button type="button" class="popup__btn-close"></button>
+      </div>
+    </div>
+    <div id="popupAvatar" class="popup">
+      <div class="popup__container">
+        <h2 class="popup__title">Обновить аватар</h2>
+        <form name="c" class="popup__form" novalidate>
+          <input
+            name="avatar"
+            type="url"
+            placeholder="Ссылка на картинку"
+            class="popup__input popup__input_add_link"
+            id="add-url"
+            required
+            />
+          <span class="popup__error" id="add-url-error"></span>
+          <button type="submit" class="popup__btn-submit
+            popup__btn-submit_inactive" disabled>Сохранить</button>
+        </form>
         <button type="button" class="popup__btn-close"></button>
       </div>
     </div>

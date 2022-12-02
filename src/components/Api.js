@@ -44,6 +44,10 @@ export default class Api {
   }
 
   deleteCard(id) {
-    return this._fetch(`/cards/${id}`,'DELETE')
+    return this._fetch(`/cards/${id}`, "DELETE");
+  }
+
+  editAvatar(avatar) {
+    return this._fetch(`/users/me/avatar`, "PATCH", avatar);
   }
 }
