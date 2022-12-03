@@ -23,12 +23,12 @@ export default class Card {
     this._buttonLikeCard = this._card.querySelector(".places__like");
     this._likeCounter = this._card.querySelector(".places__like-counter");
     this._buttonDeleteCard = this._card.querySelector(".places__remove");
-    this._isLiked = !!(this._data.likes.find(obj => obj._id === this._userId))
+    this._isLiked = !!this._data.likes.find((obj) => obj._id === this._userId);
     if (this._userId !== this._ownerId) {
       this._buttonDeleteCard.remove();
     }
-    if(this._isLiked){
-      this._buttonLikeCard.classList.add("places__like_active")
+    if (this._isLiked) {
+      this._buttonLikeCard.classList.add("places__like_active");
     }
     this._likeCounter.textContent = this._data.likes.length;
     this._cardImage.src = this._data.link;
@@ -50,7 +50,7 @@ export default class Card {
   }
 
   _clickLikeButtonHandler() {
-    this._handleLikeClick(this._isLiked,this._data._id);
+    this._handleLikeClick(this._isLiked, this._data._id);
     this._buttonLikeCard.classList.toggle("places__like_active");
   }
 

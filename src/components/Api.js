@@ -21,7 +21,7 @@ export default class Api {
         return data;
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
       });
 
     return responce;

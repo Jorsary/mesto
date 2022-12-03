@@ -40,21 +40,28 @@ const popupDeleteConfirm = new PopupDeleteConfirm(
 );
 popupDeleteConfirm.setEventListeners();
 
-const popupWithNewPlaceForm = new PopupWithForm("#popupAddCard", (data) => {
-  api.createNewCard(data).then((card) => {
-    cardList.addItem(createCard(card));
+const popupWithNewPlaceForm = new PopupWithForm(
+  "#popupAddCard",
+  async (data) => {
+    api.createNewCard(data).then((card) => {
+      cardList.addItem(createCard(card));
+    });
+  }
+);
+
+const popupWithProfileForm = new PopupWithForm(
+  "#popupProfile",
+  async (data) => {
+    api.editProfie(data).then((data) => {
+      userInfo.setUserInfo(data);
+    });
+  }
+);
+
+const PopupWithAvatarForm = new PopupWithForm("#popupAvatar", async (data) => {
+  api.editAvatar({ avatar: data.avatar }).then(() => {
+    userInfo.setAvatar(data.avatar);
   });
-});
-
-const popupWithProfileForm = new PopupWithForm("#popupProfile", (data) => {
-  api.editProfie(data);
-  userInfo.setUserInfo(data);
-});
-
-const PopupWithAvatarForm = new PopupWithForm("#popupAvatar", (data) => {
-  api
-    .editAvatar({ avatar: data.avatar })
-    .then(() => userInfo.setAvatar(data.avatar));
 });
 
 const api = new Api({
@@ -123,13 +130,13 @@ function createCard(data) {
     },
     (isLiked, id) => {
       if (isLiked) {
-        api.removeLike(id).then((data)=>{
-          card.removeLike(data.likes.length)
-        })
+        api.removeLike(id).then((data) => {
+          card.removeLike(data.likes.length);
+        });
       } else {
-        api.setLike(id).then((data)=>{
-          card.setLike(data.likes.length)
-        })
+        api.setLike(id).then((data) => {
+          card.setLike(data.likes.length);
+        });
       }
     },
     userId
