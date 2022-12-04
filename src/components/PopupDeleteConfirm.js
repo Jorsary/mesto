@@ -7,17 +7,21 @@ export default class PopupDeleteConfirm extends Popup {
     this._submitRemoveButton = this._popup.querySelector(".popup__btn-submit");
   }
 
-  openPopup(id,card) {
+  openPopup(id, card) {
     this._id = id;
-    this._card = card
+    this._card = card;
     super.openPopup();
   }
 
   setEventListeners() {
     this._submitRemoveButton.addEventListener("click", () => {
-      console.log();
-      this._remover(this._id,this._card);
-      this.closePopup()
+      this._remover(this._id, this._card)
+        .then(() => {
+          this.closePopup();
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     });
     super.setEventListeners();
   }

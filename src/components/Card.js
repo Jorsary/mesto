@@ -45,13 +45,9 @@ export default class Card {
       .cloneNode(true);
     return card;
   }
-  _clickDeleteButtonHandler() {
-    this._openPopupImage(this._data.name, this._data.link);
-  }
 
   _clickLikeButtonHandler() {
     this._handleLikeClick(this._isLiked, this._data._id);
-    this._buttonLikeCard.classList.toggle("places__like_active");
   }
 
   _clickCardImageHandler() {

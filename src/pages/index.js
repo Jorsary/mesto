@@ -32,10 +32,16 @@ popupImage.setEventListeners();
 
 const popupDeleteConfirm = new PopupDeleteConfirm(
   "#popupDelete",
-  (id, card) => {
-    api.deleteCard(id);
-    card.remove();
-    card = null;
+  async (id, card) => {
+    api
+      .deleteCard(id)
+      .then(() => {
+        card.remove();
+        card = null;
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
 );
 popupDeleteConfirm.setEventListeners();
@@ -43,7 +49,7 @@ popupDeleteConfirm.setEventListeners();
 const popupWithNewPlaceForm = new PopupWithForm(
   "#popupAddCard",
   async (data) => {
-    api.createNewCard(data).then((card) => {
+    return api.createNewCard(data).then((card) => {
       cardList.addItem(createCard(card));
     });
   }
@@ -52,14 +58,14 @@ const popupWithNewPlaceForm = new PopupWithForm(
 const popupWithProfileForm = new PopupWithForm(
   "#popupProfile",
   async (data) => {
-    api.editProfie(data).then((data) => {
+    return api.editProfie(data).then((data) => {
       userInfo.setUserInfo(data);
     });
   }
 );
 
-const PopupWithAvatarForm = new PopupWithForm("#popupAvatar", async (data) => {
-  api.editAvatar({ avatar: data.avatar }).then(() => {
+const popupWithAvatarForm = new PopupWithForm("#popupAvatar", async (data) => {
+  return api.editAvatar({ avatar: data.avatar }).then(() => {
     userInfo.setAvatar(data.avatar);
   });
 });
@@ -112,10 +118,10 @@ newPlaceOpenButton.addEventListener("click", () => {
   formValidationPlace.resetValidation();
 });
 
-PopupWithAvatarForm.setEventListeners();
+popupWithAvatarForm.setEventListeners();
 avatar.addEventListener("click", () => {
-  PopupWithAvatarForm.openPopup();
-  formValidationPlace.resetValidation();
+  popupWithAvatarForm.openPopup();
+  popupWithAvatarForm.resetValidation();
 });
 
 function createCard(data) {
@@ -130,13 +136,23 @@ function createCard(data) {
     },
     (isLiked, id) => {
       if (isLiked) {
-        api.removeLike(id).then((data) => {
-          card.removeLike(data.likes.length);
-        });
+        api
+          .removeLike(id)
+          .then((data) => {
+            card.removeLike(data.likes.length);
+          })
+          .catch((err) => {
+            console.error(err);
+          });
       } else {
-        api.setLike(id).then((data) => {
-          card.setLike(data.likes.length);
-        });
+        api
+          .setLike(id)
+          .then((data) => {
+            card.setLike(data.likes.length);
+          })
+          .catch((err) => {
+            console.error(err);
+          });
       }
     },
     userId

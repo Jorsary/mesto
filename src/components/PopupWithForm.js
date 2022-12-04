@@ -33,6 +33,9 @@ export default class PopupWithForm extends Popup {
       }).catch((err)=>{
         console.error(err)
       })
+      .finally(() => {
+        this._submitButton.textContent = this._initButtonText;
+      });
     });
     super.setEventListeners();
   }
@@ -40,9 +43,5 @@ export default class PopupWithForm extends Popup {
   closePopup() {
     this._form.reset();
     super.closePopup();
-  }
-  openPopup() {
-    this._submitButton.textContent = this._initButtonText
-    super.openPopup();
   }
 }
