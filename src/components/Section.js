@@ -7,13 +7,14 @@ export default class Section {
     this._renderedItems = items.reverse();
   }
 
-  addItem(element) {
-    this._container.prepend(element);
+  addItem(item) {
+    const card = this._renderer(item)
+    this._container.prepend(card);
   }
 
   renderItems() {
     this._renderedItems.forEach((item) => {
-      this._renderer(item);
+      this.addItem(item);
     });
   }
 }
